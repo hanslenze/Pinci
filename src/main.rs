@@ -134,6 +134,10 @@ mod app {
         config: HoldTapConfig::Default,
         tap_hold_interval: 0,
     };
+    const DOUBLE_DOT: Action<CustomActions> = Action::MultipleKeyCodes(&[LShift, SColon]);
+    const COPY: Action<CustomActions> = Action::MultipleKeyCodes(&[LCtrl, C]);
+    const PASTE: Action<CustomActions> = Action::MultipleKeyCodes(&[LCtrl, V]);
+
 
     #[rustfmt::skip]
     pub static LAYERS: keyberon::layout::Layers<CustomActions> = keyberon::layout::layout! {
@@ -147,7 +151,7 @@ mod app {
         n n n n n                n n    Up     n     n
         LShift LGui n n n        n Left Down   Right n
         LCtrl LAlt n n n         n Home PgDown PgUp  End
-        t  t  t  t  n            n n n n n
+        t  t  t  t  n            n BSpace n n n
     ]}
     {[ // 2 FUN
         n n n n n           F9 F10 F11 F12 Delete
@@ -157,14 +161,14 @@ mod app {
     ]}
     {[ // 3 SYM
         '{'  &  *  '('  '}'   n  n  n  n  n
-        t  $  %  ^  +   n     n  n  RGui RShift
+        {DOUBLE_DOT}  $  %  ^  +   n     n  n  RGui RShift
         ~  !  @  #  |   n     n  n  RAlt RCtrl
         n  n  n  ')'  '_'     t  t  t  t  t
     ]}
     {[ // 4 NUM
         '['     7 8 9 ']'      t t VolDown VolUp Mute
         SColon  4 5 6 Equal    t t t RGui RShift
-        Grave   1 2 3 Bslash   t t t RAlt RCtrl
+        Grave   1 2 3 Bslash   t {PASTE} {COPY} RAlt RCtrl
         t       t t 0 -        t t t t t
     ]}
 
