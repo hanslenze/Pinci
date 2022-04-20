@@ -134,7 +134,7 @@ mod app {
         config: HoldTapConfig::Default,
         tap_hold_interval: 0,
     };
-    const DOUBLE_DOT: Action<CustomActions> = Action::MultipleKeyCodes(&[LShift, SColon]);
+    const COLON: Action<CustomActions> = Action::MultipleKeyCodes(&[LShift, SColon]);
     const COPY: Action<CustomActions> = Action::MultipleKeyCodes(&[LCtrl, C]);
     const PASTE: Action<CustomActions> = Action::MultipleKeyCodes(&[LCtrl, V]);
 
@@ -148,7 +148,7 @@ mod app {
         t          t        t        {L1_BSPACE} {L2_TAB}    {L3_ENTER}   {L4_SPACE} Escape      Enter   Tab
     ]}
     {[ // 1 NAV
-        n n n n n                n n    Up     n     n
+        n n n n n                n n    Up     n     Delete
         LShift LGui n n n        n Left Down   Right n
         LCtrl LAlt n n n         n Home PgDown PgUp  End
         t  t  t  t  n            n BSpace n n n
@@ -161,7 +161,7 @@ mod app {
     ]}
     {[ // 3 SYM
         '{'  &  *  '('  '}'   n  n  n  n  n
-        {DOUBLE_DOT}  $  %  ^  +   n     n  n  RGui RShift
+        {COLON}  $  %  ^  +   n     n  n  RGui RShift
         ~  !  @  #  |   n     n  n  RAlt RCtrl
         n  n  n  ')'  '_'     t  t  t  t  t
     ]}
